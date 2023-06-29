@@ -1,0 +1,12 @@
+params:
+- params.yaml
+metrics:
+- metrics.json
+plots:
+- plots/sklearn/roc/train.json:
+    template: simple
+    x: fpr
+    y: tpr
+    title: Receiver operating characteristic (ROC)
+    x_label: False Positive Rate
+    y_label: True Positive Rate
