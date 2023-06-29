@@ -14,14 +14,14 @@ from matplotlib import pyplot as plt
 EVAL_PATH = "eval"
 
 
-if len(sys.argv) != 3:
-    sys.stderr.write("Arguments error. Usage:\n")
-    sys.stderr.write("\tpython evaluate.py model features\n")
-    sys.exit(1)
+# if len(sys.argv) != 3:
+#     sys.stderr.write("Arguments error. Usage:\n")
+#     sys.stderr.write("\tpython evaluate.py model features\n")
+#     sys.exit(1)
 
-model_file = sys.argv[1]
-train_file = os.path.join(sys.argv[2], "train.pkl")
-test_file = os.path.join(sys.argv[2], "test.pkl")
+# model_file = sys.argv[1]
+# train_file = os.path.join(sys.argv[2], "train.pkl")
+# test_file = os.path.join(sys.argv[2], "test.pkl")
 
 
 def evaluate(model, matrix, split, live):
@@ -74,28 +74,29 @@ def evaluate(model, matrix, split, live):
                           name=f"cm/{split}"
                          )
 
+    return live.summary
 
-# Load model and data.
-with open(model_file, "rb") as fd:
-    model = pickle.load(fd)
+# # Load model and data.
+# with open(model_file, "rb") as fd:
+#     model = pickle.load(fd)
 
-with open(train_file, "rb") as fd:
-    train, feature_names = pickle.load(fd)
+# with open(train_file, "rb") as fd:
+#     train, feature_names = pickle.load(fd)
 
-with open(test_file, "rb") as fd:
-    test, _ = pickle.load(fd)
+# with open(test_file, "rb") as fd:
+#     test, _ = pickle.load(fd)
 
-# Evaluate train and test datasets.
-live = Live(os.path.join(EVAL_PATH, "live"), dvcyaml=False)
-evaluate(model, train, "train", live)
-evaluate(model, test, "test", live)
-live.make_summary()
+# # Evaluate train and test datasets.
+# live = Live(os.path.join(EVAL_PATH, "live"), dvcyaml=False)
+# evaluate(model, train, "train", live)
+# evaluate(model, test, "test", live)
+# live.make_summary()
 
-# Dump feature importance image and show it with your plots.
-fig, axes = plt.subplots(dpi=100)
-fig.subplots_adjust(bottom=0.2, top=0.95)
-importances = model.feature_importances_
-forest_importances = pd.Series(importances, index=feature_names).nlargest(n=30)
-axes.set_ylabel("Mean decrease in impurity")
-forest_importances.plot.bar(ax=axes)
-fig.savefig(os.path.join(EVAL_PATH, "importance.png"))
+# # Dump feature importance image and show it with your plots.
+# fig, axes = plt.subplots(dpi=100)
+# fig.subplots_adjust(bottom=0.2, top=0.95)
+# importances = model.feature_importances_
+# forest_importances = pd.Series(importances, index=feature_names).nlargest(n=30)
+# axes.set_ylabel("Mean decrease in impurity")
+# forest_importances.plot.bar(ax=axes)
+# fig.savefig(os.path.join(EVAL_PATH, "importance.png"))
