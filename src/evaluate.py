@@ -36,8 +36,8 @@ def evaluate(model, matrix, split, live):
     avg_prec = metrics.average_precision_score(labels, predictions)
     roc_auc = metrics.roc_auc_score(labels, predictions)
     if not live.summary:
-        live.summary = {"avg_prec": {}, "roc_auc": {}}
-    live.summary["avg_prec"][split] = avg_prec
+        live.summary = {"avg_precsion": {}, "roc_auc": {}}
+    live.summary["avg_precsion"][split] = avg_prec
     live.summary["roc_auc"][split] = roc_auc
 
     # ... and plots...
