@@ -1,0 +1,7 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = /tmp/dvcstore
+['remote "oss-remote"']
+    url = oss://test-wsl/dvc
+    oss_endpoint = oss-cn-beijing.aliyuncs.com
