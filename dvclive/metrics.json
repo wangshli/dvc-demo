@@ -1,8 +1,8 @@
 {
-    "avg_precsion": {
-        "train": 0.9584013806812807
+    "metric": 1.8910197007501202,
+    "nested": {
+        "metric": 1.4663477506870977
     },
-    "roc_auc": {
-        "train": 0.9784024560678972
-    }
+    "step": 1,
+    "summary_metric": 1.0
 }

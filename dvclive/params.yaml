@@ -1,1 +1,3 @@
-epochs: 1
+epochs: 2
+prepare/split: 0.2
+prepare/seed: 1
