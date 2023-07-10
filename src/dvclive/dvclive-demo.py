@@ -41,4 +41,5 @@ with Live(save_dvc_exp=True) as live:
             live.log_metric(metric_name, value)
         live.next_step()
 
+    # Tracks a local file or directory with DVC
     live.log_artifact("model.pkl", type="model")

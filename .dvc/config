@@ -1,5 +1,5 @@
 [core]
-    remote = myremote
+    remote = oss-remote
 [cache]
     type = "hardlink,symlink"
 ['remote "myremote"']
