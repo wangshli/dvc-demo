@@ -22,7 +22,7 @@ input = sys.argv[1]
 output_train = os.path.join("data", "prepared", "train.tsv")
 output_test = os.path.join("data", "prepared", "test.tsv")
 
-
+# prepare
 def process_posts(fd_in, fd_out_train, fd_out_test, target_tag):
     num = 1
     for line in fd_in:

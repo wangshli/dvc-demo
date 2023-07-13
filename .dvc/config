@@ -1,7 +1,9 @@
 [core]
     remote = oss-remote
 [cache]
-    type = "hardlink,symlink"
+    type = symlink
+    dir = /Users/wsl/workspace/dvc-cache
+    shared = group
 ['remote "myremote"']
     url = /tmp/dvcstore
 ['remote "oss-remote"']
