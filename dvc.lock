@@ -14,11 +14,11 @@ stages:
     params:
       params.yaml:
         prepare.seed: 20170428
-        prepare.split: 0.2
+        prepare.split: 0.5
     outs:
     - path: data/prepared
       hash: md5
-      md5: 153aad06d376b6595932470e459ef42a.dir
+      md5: 584f223474ec5618d2e9050b2c9ff044.dir
       size: 8437363
       nfiles: 2
   featurize:
@@ -26,7 +26,7 @@ stages:
     deps:
     - path: data/prepared
       hash: md5
-      md5: 153aad06d376b6595932470e459ef42a.dir
+      md5: 584f223474ec5618d2e9050b2c9ff044.dir
       size: 8437363
       nfiles: 2
     - path: src/featurization.py
@@ -40,16 +40,16 @@ stages:
     outs:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: e40782c91a6f3efc5ad96535ffe52293.dir
+      size: 1558194
       nfiles: 2
   train:
     cmd: python src/train.py data/features model.pkl
     deps:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: e40782c91a6f3efc5ad96535ffe52293.dir
+      size: 1558194
       nfiles: 2
     - path: src/train.py
       hash: md5
@@ -63,20 +63,20 @@ stages:
     outs:
     - path: model.pkl
       hash: md5
-      md5: 2e780d3083c9110deb085077a77408ee
-      size: 3354185
+      md5: dc99471f9c817a23f7c2e6f1e8b57ad6
+      size: 2870957
   evaluate:
     cmd: python src/evaluate.py model.pkl data/features
     deps:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: e40782c91a6f3efc5ad96535ffe52293.dir
+      size: 1558194
       nfiles: 2
     - path: model.pkl
       hash: md5
-      md5: 2e780d3083c9110deb085077a77408ee
-      size: 3354185
+      md5: dc99471f9c817a23f7c2e6f1e8b57ad6
+      size: 2870957
     - path: src/evaluate.py
       hash: md5
       md5: e1a0cdcd3c42733bc6423a08902a2077
@@ -84,19 +84,19 @@ stages:
     outs:
     - path: eval/importance.png
       hash: md5
-      md5: 1a7b84aea10fad113d02062b2b88aa60
-      size: 29758
+      md5: b84d4022df6eaf4aeed50073135f8028
+      size: 32311
     - path: eval/live/metrics.json
       hash: md5
-      md5: c0d0a75c1d83b8f6cf535946c3f673d9
+      md5: 3de7fd6a3cb5b919f8230613ffceca46
       size: 200
     - path: eval/live/plots
       hash: md5
-      md5: 93529c573f6ea296b72cce324d2996bc.dir
-      size: 786155
+      md5: eeb3f7e91b4db07891aab49de5040931.dir
+      size: 801650
       nfiles: 4
     - path: eval/prc
       hash: md5
-      md5: 0578c01005008a3b58bb91dbd990790d.dir
-      size: 295980
+      md5: 5ec67692d231cd81e4d7cd35ef6c0b6d.dir
+      size: 296331
       nfiles: 2
