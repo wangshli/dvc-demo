@@ -1,0 +1,10 @@
+FROM ubuntu:22.10
+
+RUN apt-get update -y && apt-get install -y python3 curl git
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python3 get-pip.py
+RUN pip3 install dvc 
+RUN pip3 install "dvc[oss]"
+
+ADD requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
